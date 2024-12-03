@@ -1,0 +1,305 @@
+@use './mixins.scss' as mix;
+
+:root {
+  // --contrast: #ffffff;
+
+  --primary-main: #666cff;
+  // --primary-light: #787eff;
+  // --primary-dark: #5a5fe0;
+  // --primary-contained-hover: #5459d1;
+  // --primary-outlined-hover: #666cff0d;
+  // --primary-outlined-resting: #666cff80;
+
+  --secondary-main: #6d788d;
+  // --secondary-light: #7f889b;
+  // --secondary-dark: #606a7c;
+  // --secondary-contained-hover: #596274;
+  // --secondary-outlined-hover: #6d788d0d;
+  // --secondary-outlined-resting: #6d788d80;
+
+  // --info-main: #26c6f9;
+  // --info-light: #40cdfa;
+  // --info-dark: #21aedb;
+  // --info-contained-hover: #1fa2cc;
+  // --info-outlined-hover: #26c6f90d;
+  // --info-outlined-resting: #26c6f980;
+
+  --error-main: #ff4d49;
+  // --error-light: #ff625f;
+  // --error-dark: #e04440;
+  // --error-contained-hover: #d13f3c;
+  // --error-outlined-hover: hwb(1 29% 0% / 0.051);
+  // --error-outlined-resting: rgba(255, 77, 73, 0.502);
+
+  --success-main: #72e128;
+  // --success-light: #83e542;
+  // --success-dark: #64c623;
+  // --success-contained-hover: #5db921;
+  // --success-outlined-hover: #72e1280d;
+  // --success-outlined-resting: #72e12880;
+
+  //indexes
+  //--z-header: 3;
+  //--z-overlay: 5;
+
+  //shadows
+  //--bar-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.05);
+
+  //fonts
+  --font-inter: 'Inter', sans-serif;
+  --font-nunito: 'Nunito', sans-serif;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html[data-theme='dark'] {
+  //skeleton
+  --skeleton: #383b58;
+
+  //gradients
+  --gradient-skeleton: linear-gradient(
+    100deg,
+    rgba(65, 66, 77, 0) 40%,
+    rgba(65, 66, 77, 0.5) 50%,
+    rgba(65, 66, 77, 0) 60%
+  );
+
+  //action
+  //--action-disabled: #4c4e6442;
+  //--action-disabled-bg: #4c4e641f;
+  //typo
+  --text-primary: #eaeaffde;
+  //--text-secondary: #e7e3fcad;
+  //--text-disabled: #e7e3fc61;
+  //other
+  // --divider: #e6e6e61f;
+  // --outline-border: #eaf2ff38;
+  // --input-line: #eaeaff38;
+  // --overlay: #10112199;
+  // --snackbar-bg: #f5f5f5;
+  --body-bg: #282a42;
+  // --card: #30334e;
+
+  //custom-bg
+  //--custom-bg-secondary: rgb(45, 47, 71);
+}
+html[data-theme='light'] {
+  //skeleton
+  --skeleton: #f1f2f3;
+
+  //gradients
+  --gradient-skeleton: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0) 60%
+  );
+
+  //action
+  // --action-disabled: #eaeaff42;
+  // --action-disabled-bg: #eaeaff1f;
+  //typo
+  --text-primary: #4c4e64de;
+  // --text-secondary: #4c4e64ad;
+  // --text-disabled: #4c4e6461;
+
+  //other
+  // --divider: #4c4e641f;
+  // --outline-border: #4c4e6438;
+  // --input-line: #4c4e6438;
+  // --overlay: #4c4e6480;
+  // --snackbar-bg: #212121;
+  --body-bg: #f7f7f9;
+  // --card: #ffffff;
+  // //custom-bg
+  // --custom-bg-secondary: #f5f5f5;
+}
+
+html {
+  scroll-behavior: smooth;
+  // scroll-padding-top: var(--padding-topBar);
+}
+@media screen and (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+//FONTS START
+/* nunito-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/Nunito/nunito-v26-latin-regular.woff2') format('woff2'),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+      url('/fonts/Nunito/nunito-v26-latin-regular.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+}
+/* nunito-500 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 500;
+  src: url('/fonts/Nunito/nunito-v26-latin-500.woff2') format('woff2'),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+      url('/fonts/Nunito/nunito-v26-latin-500.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+}
+/* nunito-600 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  src: url('/fonts/Nunito/nunito-v26-latin-600.woff2') format('woff2'),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+      url('/fonts/Nunito/nunito-v26-latin-600.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+}
+/* nunito-700 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/fonts/Nunito/nunito-v26-latin-700.woff2') format('woff2'),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+      url('/fonts/Nunito/nunito-v26-latin-700.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+}
+/* nunito-800 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 800;
+  src: url('/fonts/Nunito/nunito-v26-latin-800.woff2') format('woff2'),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+      url('/fonts/Nunito/nunito-v26-latin-800.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+}
+/* nunito-900 - latin */
+@font-face {
+  font-display: swap;
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 900;
+  src: url('/fonts/Nunito/nunito-v26-latin-900.woff2') format('woff2'),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+      url('/fonts/Nunito/nunito-v26-latin-900.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+}
+
+/* inter-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/Inter/inter-v18-latin-regular.woff2') format('woff2'),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+      url('/fonts/Inter/inter-v18-latin-regular.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+}
+/* inter-500 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  src: url('/fonts/Inter/inter-v18-latin-500.woff2') format('woff2'),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+      url('/fonts/Inter/inter-v18-latin-500.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+}
+/* inter-600 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  src: url('/fonts/Inter/inter-v18-latin-600.woff2') format('woff2'),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+      url('/fonts/Inter/inter-v18-latin-600.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+}
+/* inter-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/fonts/Inter/inter-v18-latin-700.woff2') format('woff2'),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+      url('/fonts/Inter/inter-v18-latin-700.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+}
+/* inter-800 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 800;
+  src: url('/fonts/Inter/inter-v18-latin-800.woff2') format('woff2'),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+      url('/fonts/Inter/inter-v18-latin-800.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+}
+/* inter-900 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 900;
+  src: url('/fonts/Inter/inter-v18-latin-900.woff2') format('woff2'),
+    /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+      url('/fonts/Inter/inter-v18-latin-900.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+}
+
+//FONTS END
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+}
+ul,
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+body {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  color: var(--text-primary);
+  background: var(--body-bg);
+  transition: color 0.5s, background-color 0.5s;
+
+  @include mix.body16Typo;
+  font-family: var(--font-inter);
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+
+  cursor: pointer;
+}

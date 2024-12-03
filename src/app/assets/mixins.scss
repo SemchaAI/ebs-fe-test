@@ -1,0 +1,42 @@
+@mixin body16Typo() {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+}
+@mixin body14Typo() {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+}
+@mixin body12Typo() {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0.25px;
+}
+
+//FOR BTN
+@mixin btn12Typo() {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 1.25px;
+}
+
+//FOR HEADLINE
+@mixin headline24Typo() {
+  font-family: var(--font-nunito);
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 24px;
+  letter-spacing: 0.18px;
+}
+@mixin headline32Typo() {
+  font-family: var(--font-nunito);
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 32px;
+  letter-spacing: 0px;
+}
