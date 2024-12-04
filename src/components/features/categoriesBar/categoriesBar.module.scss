@@ -1,0 +1,47 @@
+.bar {
+  --border-radius: 15px;
+
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  white-space: nowrap;
+
+  position: relative;
+  display: flex;
+  max-width: calc(100dvw - 100px); // 94px is sort button  width
+  position: relative;
+
+  padding: 6px 5px;
+  gap: 5px;
+
+  border-radius: var(--border-radius);
+  background: var(--custom-bg-secondary);
+}
+.barItem {
+  display: block;
+  padding: 5px 10px;
+
+  border-radius: var(--border-radius);
+  border: 1px solid transparent;
+
+  text-decoration: none;
+  text-transform: capitalize;
+  color: var(--text-primary);
+
+  transition: all 0.3s ease-in-out;
+
+  cursor: pointer;
+}
+.active {
+  box-shadow: var(--bar-shadow);
+  background-color: var(--card);
+  color: var(--primary-main);
+}
+
+@media screen and (max-width: 768px) {
+  .bar {
+    flex-grow: 1;
+    max-width: 70%;
+  }
+}
