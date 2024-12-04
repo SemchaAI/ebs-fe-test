@@ -1,16 +1,20 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { BaseLayout } from '@/app/layouts';
-import { HomePage } from '@/pages';
+import { CartPage, HomePage, MainErrorPage } from '@/pages';
 
 export const appRouter = () =>
   createBrowserRouter([
     {
       element: <BaseLayout />,
-      errorElement: <div>error</div>,
+      errorElement: <MainErrorPage />,
       children: [
         {
           path: '/',
           element: <HomePage />,
+        },
+        {
+          path: '/cart',
+          element: <CartPage />,
         },
       ],
     },
