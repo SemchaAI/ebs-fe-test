@@ -1,14 +1,15 @@
 import { Outlet, ScrollRestoration } from 'react-router-dom';
+import { MainFooter, MainHeader } from '@/components/widgets';
 import css from './baseLayout.module.css';
 
 export function BaseLayout() {
   return (
     <>
-      {/* <MainHeader /> */}
+      <MainHeader />
       <main className={css.main}>
         <Outlet />
       </main>
-      {/* <MainFooter /> */}
+      <MainFooter />
       <ScrollRestoration />
     </>
   );
