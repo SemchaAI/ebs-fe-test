@@ -1,16 +1,17 @@
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { Skeleton } from '@/components/shared';
 
 import { getCategories } from '@/services/categoriesApi';
 
-import { useProductContext } from '@/contexts';
+import { useProductContext, useToastContext } from '@/contexts';
 
 import css from './categoriesBar.module.scss';
 
-export const CategoriesBar = () => {
+export const CategoriesBar = memo(() => {
   const [categories, setCategories] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const { setCategory, currentCategory } = useProductContext();
+  const { addToast } = useToastContext();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,6 +21,7 @@ export const CategoriesBar = () => {
         setCategories(data);
       } catch (error) {
         console.log('Failed to fetch categories:', error);
+        addToast('Failed to fetch categories', 'error', 5000);
       } finally {
         setLoading(false);
       }
@@ -62,4 +64,4 @@ export const CategoriesBar = () => {
       ))}
     </div>
   );
-};
+});
