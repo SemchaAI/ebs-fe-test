@@ -27,7 +27,13 @@ export const MainHeader = () => {
               </p>
             </div>
           </Link>
-          <ShoppingCart />
+          <Link
+            to={'/cart'}
+            title="Squirrel shop cart"
+            style={{ textDecoration: 'none', color: 'inherit' }}
+          >
+            <ShoppingCart />
+          </Link>
         </div>
       </Container>
     </header>
