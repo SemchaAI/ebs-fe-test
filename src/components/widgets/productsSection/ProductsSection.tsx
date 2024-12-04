@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 
 import { Container, MainBtn } from '@/components/shared';
 import { CategoriesBar, Pagination, ProductList } from '@/components/features';
+import { ProductCard, ProductCardSkeleton } from '@/components/entities';
 
 import { useProductContext } from '@/contexts';
 
@@ -21,27 +22,16 @@ export const ProductsSection = () => {
     toggleSort,
   } = useProductContext();
 
-  const [paginatedProducts, setPaginatedProducts] = useState<IProduct[]>([]);
-
-  useEffect(() => {
+  const paginatedProducts = useMemo(() => {
     const startIndex = (currentPage - 1) * pageSize;
-    const paginated = products.slice(startIndex, startIndex + pageSize);
-    setPaginatedProducts(paginated);
+    return products.slice(startIndex, startIndex + pageSize);
   }, [products, currentPage, pageSize]);
 
   return (
     <section className={css.productsSection}>
       <Container>
         <h3 className={css.productsSectionTitle}>Our products</h3>
-        <div
-          style={{
-            marginTop: '20px',
-            display: 'flex',
-            justifyContent: 'space-between',
-            gap: '10px',
-            alignItems: 'center',
-          }}
-        >
+        <div className={css.productListHeader}>
           <CategoriesBar />
           <MainBtn
             icon
@@ -55,11 +45,17 @@ export const ProductsSection = () => {
             />
           </MainBtn>
         </div>
-        <ProductList
-          loading={loading}
-          pageSize={pageSize}
-          products={paginatedProducts}
-        />
+        <div className={css.productListContainer}>
+          <ProductList
+            loading={loading}
+            pageSize={pageSize}
+            items={paginatedProducts}
+            skeleton={<ProductCardSkeleton />}
+            renderItem={(product: IProduct) => (
+              <ProductCard product={product} />
+            )}
+          />
+        </div>
         <Pagination
           totalProducts={products.length}
           currentPage={currentPage}

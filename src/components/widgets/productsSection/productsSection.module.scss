@@ -12,3 +12,13 @@
     transform: rotate(-180deg);
   }
 }
+.productListHeader {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.productListContainer {
+  margin-top: 20px;
+}
