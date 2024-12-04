@@ -1,0 +1,34 @@
+.toastContainer {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.toast {
+  padding: 10px 20px 10px 15px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-radius: 5px;
+  border: 1px solid var(--divider);
+
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background: var(--card);
+
+  z-index: var(--z-toast);
+
+  &.success {
+    border-left: 6px solid var(--success-main);
+  }
+  &.error {
+    border-left: 6px solid var(--error-main);
+  }
+  &.info {
+    border-left: 6px solid var(--info-main);
+  }
+}
