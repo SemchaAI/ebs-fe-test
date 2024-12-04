@@ -1,0 +1,77 @@
+@use '@/app/assets/mixins.scss' as mix;
+
+.cartSection {
+  margin: 40px 0;
+}
+.cartSectionTitleContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cartSectionTitle {
+  @include mix.headline24Typo;
+}
+.cartSectionContainer {
+  position: relative;
+  margin-top: 20px;
+
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+.stickyCart {
+  position: sticky;
+  top: 20px;
+  right: 0;
+}
+.cartOrder {
+  width: 360px;
+
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 8px;
+
+  color: var(--tertiary);
+  background-color: var(--background-soft);
+  box-shadow: var(--dp-0);
+}
+.asterisk {
+  color: var(--error-main);
+}
+.cartLink {
+  margin-top: 20px;
+  padding: 10px 0;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  transition: color, background-color 0.3s ease-in-out;
+  text-decoration: none;
+  border-radius: 5px;
+
+  background-color: var(--primary-main);
+  color: var(--text-primary);
+  &:hover,
+  &:focus {
+    background-color: var(--primary-contained-hover);
+  }
+}
+
+@media (max-width: 991px) {
+  .cartSectionContainer {
+    flex-direction: column;
+  }
+  .stickyCart {
+    position: relative;
+    top: unset;
+    right: unset;
+  }
+  .cartOrder {
+    width: 100%;
+    justify-content: center;
+  }
+}
