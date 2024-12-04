@@ -1,0 +1,87 @@
+@use '@/app/assets/mixins.scss' as mix;
+
+.header {
+  position: relative;
+  max-height: 70px;
+  background-color: var(--card);
+  padding: 10px 0 9px 0;
+  grid-area: header;
+
+  &::after {
+    content: '';
+    border-bottom: 1px solid var(--divider);
+    height: 0;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+.headerContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  &:hover .logoIcon,
+  &:focus .logoIcon {
+    stroke: var(--error-main);
+  }
+}
+
+.logoIcon {
+  transition: stroke 0.3s;
+}
+
+.logoTextBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.logoTitle {
+  display: flex;
+  @include mix.headline24Typo;
+  & span {
+    @include mix.headline24Typo;
+    color: var(--error-main);
+  }
+}
+
+.logoText {
+  display: flex;
+  justify-content: space-between;
+  @include mix.body14Typo;
+}
+
+.logoLink,
+.navLink {
+  color: var(--primary-main);
+  text-decoration: none;
+}
+
+@media screen and (max-width: 991px) {
+  .headerContainer {
+    gap: 5px;
+  }
+  .logoTextBlock {
+    display: none;
+  }
+  .logoIcon {
+    min-width: 40px;
+    min-height: 40px;
+  }
+}
+@media screen and (max-width: 425px) {
+  .logoIcon {
+    min-width: 30px;
+    min-height: 30px;
+  }
+}
