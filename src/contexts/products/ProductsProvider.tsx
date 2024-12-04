@@ -1,6 +1,15 @@
-import { createContext, useState, type ReactNode, useEffect } from 'react';
+import {
+  createContext,
+  useState,
+  type ReactNode,
+  // useEffect,
+  useCallback,
+  useEffect,
+  useMemo,
+} from 'react';
 import type { IProduct } from '@/models/product';
 import { getCategoryProducts, getProducts } from '@/services';
+import { useToastContext } from '@/contexts';
 
 type TSortOrder = 'desc' | 'asc';
 
@@ -14,6 +23,7 @@ interface ProductsContextValue {
   setPage: (page: number) => void;
   setCategory: (category: string) => void;
   toggleSort: () => void;
+  setProducts: (products: IProduct[]) => void;
 }
 
 const ProductsContext = createContext<ProductsContextValue | undefined>(
@@ -28,7 +38,9 @@ export const ProductsProvider = ({ children }: { children: ReactNode }) => {
   const [sortOrder, setSortOrder] = useState<TSortOrder>('asc');
   const [loading, setLoading] = useState(false);
 
-  const fetchProducts = async () => {
+  const { addToast } = useToastContext();
+
+  const fetchProducts = useCallback(async () => {
     try {
       setLoading(true);
       const newProducts =
@@ -44,15 +56,17 @@ export const ProductsProvider = ({ children }: { children: ReactNode }) => {
       setProducts(sortedProducts);
     } catch (error) {
       console.error('Failed to fetch products:', error);
+      addToast('Failed to fetch products', 'error', 5000);
     } finally {
       setLoading(false);
     }
-  };
+  }, [currentCategory]);
+
   useEffect(() => {
     fetchProducts();
   }, [currentCategory]);
 
-  const toggleSort = () => {
+  const toggleSort = useCallback(() => {
     const newSortOrder = sortOrder === 'asc' ? 'desc' : 'asc';
     setSortOrder(newSortOrder);
     setProducts((prev) =>
@@ -60,16 +74,16 @@ export const ProductsProvider = ({ children }: { children: ReactNode }) => {
         newSortOrder === 'asc' ? a.price - b.price : b.price - a.price
       )
     );
-  };
+  }, [sortOrder]);
 
-  const setCategory = (category: string) => {
+  const setCategory = useCallback((category: string) => {
     setCurrentCategory(category);
     setCurrentPage(1);
-  };
+  }, []);
 
-  const setPage = (page: number) => {
+  const setPage = useCallback((page: number) => {
     setCurrentPage(page);
-  };
+  }, []);
 
   return (
     <ProductsContext.Provider
@@ -83,6 +97,7 @@ export const ProductsProvider = ({ children }: { children: ReactNode }) => {
         setPage,
         setCategory,
         toggleSort,
+        setProducts,
       }}
     >
       {children}
