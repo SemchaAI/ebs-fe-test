@@ -1,0 +1,25 @@
+@use '@/app/assets/mixins.scss' as mix;
+.errorPage {
+  display: flex;
+  width: 100%;
+  height: 100dvh;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.errorPageTitle {
+  @include mix.headline48Typo;
+}
+.errorPageText {
+  display: flex;
+  gap: 10px;
+
+  @include mix.body16Typo;
+}
+.errorPageLink {
+  color: var(--primary-main);
+  margin-top: 20px;
+  @include mix.headline24Typo;
+}
