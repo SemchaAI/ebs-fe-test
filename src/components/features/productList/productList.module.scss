@@ -1,0 +1,10 @@
+.productListContainer {
+  margin-top: 20px;
+}
+.productList {
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
