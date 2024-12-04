@@ -1,15 +1,49 @@
 import { Link } from 'react-router-dom';
-import { Star } from 'lucide-react';
+import { Minus, Plus, ShoppingCart, Star, Trash2 } from 'lucide-react';
+
+import { MainBtn } from '@/components/shared';
+import { useCartContext } from '@/contexts';
 
 import type { IProduct } from '@/models/product';
 import css from './productCard.module.scss';
+
 interface IProps {
   product: IProduct;
+  inCart?: boolean;
+  onRemoveFromCart?: (productId: number) => void;
+  onQuantityChange?: (productId: number, quantity: number) => void;
+  quantity?: number;
 }
 
 export const ProductCard = ({
-  product: { id, image, title, description, price, rating },
-}: IProps) => {
+  product,
+  inCart = false,
+  onRemoveFromCart,
+  onQuantityChange,
+  quantity = 1,
+}: //: { id, image, title, description, price, rating },
+IProps) => {
+  const { id, image, title, description, price, rating } = product;
+  const { addItem } = useCartContext();
+
+  const handleAddToCart = () => {
+    addItem(product);
+  };
+
+  const handleRemoveFromCart = () => {
+    onRemoveFromCart?.(id);
+  };
+
+  const handleIncreaseQuantity = () => {
+    onQuantityChange?.(id, quantity + 1);
+  };
+
+  const handleDecreaseQuantity = () => {
+    if (quantity > 1) {
+      onQuantityChange?.(id, quantity - 1);
+    }
+  };
+
   return (
     <li className={css.productCard}>
       <Link
@@ -24,7 +58,54 @@ export const ProductCard = ({
         <h3 className={css.productCardTitle}>{title}</h3>
       </Link>
       <p className={css.productCardDescription}>{description}</p>
-      <p>{price}$</p>
+      <div className={css.productCardLine}>
+        <p>{price}$</p>
+        {!inCart ? (
+          <MainBtn
+            className={css.productCardBtn}
+            icon
+            type="button"
+            version="outline"
+            label="Add to cart"
+            onClick={handleAddToCart}
+          >
+            <span className={css.productCardBtnText}>Add to cart</span>
+            <ShoppingCart className={css.productCardBtnIcon} />
+          </MainBtn>
+        ) : (
+          <div className={css.cartControls}>
+            <div className={css.quantityControls}>
+              <MainBtn
+                icon
+                version="outline"
+                label="Decrease quantity"
+                onClick={handleDecreaseQuantity}
+                disabled={quantity <= 1}
+              >
+                <Minus />
+              </MainBtn>
+              <span className={css.quantity}>{quantity}</span>
+              <MainBtn
+                icon
+                version="outline"
+                label="Increase quantity"
+                onClick={handleIncreaseQuantity}
+              >
+                <Plus />
+              </MainBtn>
+            </div>
+            <MainBtn
+              icon
+              version="outline"
+              label="Remove from cart"
+              onClick={handleRemoveFromCart}
+            >
+              <Trash2 />
+            </MainBtn>
+          </div>
+        )}
+      </div>
+
       <div className={css.productCardRating}>
         {rating.rate}
         <Star

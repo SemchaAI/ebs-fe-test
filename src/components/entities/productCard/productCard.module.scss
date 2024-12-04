@@ -75,6 +75,56 @@
   text-transform: capitalize;
   @include mix.body14Typo;
 }
+.productCardLine {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.productCardBtn {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  transition: color, background-color 0.3s ease-in-out;
+
+  &:hover,
+  &:focus {
+    color: var(--text-primary);
+    background-color: var(--primary-main);
+  }
+  &:hover .productCardBtnIcon,
+  &:focus .productCardBtnIcon {
+    stroke: var(--text-primary);
+  }
+}
+.productCardBtnIcon {
+  transition: stroke 0.3s ease-in-out;
+}
+.productCardBtnText {
+  @include mix.body16Typo;
+}
+
+.cartControls {
+  display: flex;
+  gap: 10px;
+}
+.quantityControls {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.quantity {
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid var(--divider);
+  border-radius: 5px;
+}
+
 .productCardRating {
   position: absolute;
   top: 15px;
