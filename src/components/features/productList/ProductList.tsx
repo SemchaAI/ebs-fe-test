@@ -1,22 +1,28 @@
-import { ProductCard, ProductCardSkeleton } from '@/components/entities';
-
-import type { IProduct } from '@/models/product';
+import React from 'react';
 import css from './productList.module.scss';
 
-interface IProps {
-  products: IProduct[];
+interface IProps<T> {
+  items: T[];
   loading: boolean;
   pageSize: number;
+  renderItem: (item: T) => React.ReactNode;
+  skeleton: React.ReactNode;
 }
 
-export const ProductList = ({ products, loading, pageSize }: IProps) => {
+export const ProductList = <T,>({
+  items,
+  loading,
+  pageSize,
+  renderItem,
+  skeleton,
+}: IProps<T>) => {
   if (loading) {
     return (
       <div className={css.productListContainer}>
         {loading && (
           <ul className={css.productList}>
             {[...Array(pageSize)].map((_, index) => (
-              <ProductCardSkeleton key={index} />
+              <React.Fragment key={index}>{skeleton}</React.Fragment>
             ))}
           </ul>
         )}
@@ -25,15 +31,10 @@ export const ProductList = ({ products, loading, pageSize }: IProps) => {
   }
 
   return (
-    <div className={css.productListContainer}>
-      <ul className={css.productList}>
-        {products.map((product) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-          />
-        ))}
-      </ul>
-    </div>
+    <ul className={css.productList}>
+      {items.map((item, index) => (
+        <React.Fragment key={index}>{renderItem(item)}</React.Fragment>
+      ))}
+    </ul>
   );
 };
