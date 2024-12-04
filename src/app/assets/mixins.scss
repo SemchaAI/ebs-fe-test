@@ -40,3 +40,20 @@
   line-height: 32px;
   letter-spacing: 0px;
 }
+@mixin headline48Typo() {
+  font-family: var(--font-nunito);
+  font-size: 48px;
+  font-weight: bold;
+  line-height: 48px;
+  letter-spacing: 0px;
+}
+
+//FOR TEXT
+@mixin smartText($lh) {
+  max-height: #{$lh}lh;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: $lh;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+}
