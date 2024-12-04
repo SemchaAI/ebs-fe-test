@@ -7,7 +7,7 @@
   // --primary-light: #787eff;
   // --primary-dark: #5a5fe0;
   --primary-contained-hover: #5459d1;
-  // --primary-outlined-hover: #666cff0d;
+  //--primary-outlined-hover: #666cff0d;
   --primary-outlined-resting: #666cff80;
 
   --secondary-main: #6d788d;
@@ -41,6 +41,7 @@
   //indexes
   //--z-header: 3;
   //--z-overlay: 5;
+  --z-toast: 10; //max index
 
   //shadows
   --bar-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.05);
