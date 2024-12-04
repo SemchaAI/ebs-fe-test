@@ -1,0 +1,39 @@
+@use '@/app/assets/mixins.scss' as mix;
+
+.cardBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  padding: 30px 35px 35px 35px;
+  border-radius: 30px;
+
+  background-color: var(--card);
+}
+.cardBlockHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.title {
+  @include mix.headline24Typo;
+}
+.content {
+  width: 100%;
+}
+.fitContent {
+  height: fit-content;
+}
+
+@media screen and (max-width: 1200px) {
+  .cardBlock {
+    padding: 15px 20px 20px 15px;
+    border-radius: 15px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .cardBlock {
+    padding: 15px 10px;
+    border-radius: 10px;
+  }
+}
