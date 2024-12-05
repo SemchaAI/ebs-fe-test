@@ -6,6 +6,7 @@ import { useCartContext } from '@/contexts';
 
 import type { IProduct } from '@/models/product';
 import css from './productCard.module.scss';
+import { ROUTES } from '@/utils/configs/routesConfig';
 
 interface IProps {
   product: IProduct;
@@ -48,7 +49,8 @@ IProps) => {
     <li className={css.productCard}>
       <Link
         className={css.productCardLink}
-        to={`/product/${id}`}
+        // to={`/product/${id}`}
+        to="#" //ROUTES.PRODUCT
       >
         <img
           className={css.productCardImage}
