@@ -1,11 +1,12 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 
 import { Container, MainBtn } from '@/components/shared';
 import { CategoriesBar, Pagination, ProductList } from '@/components/features';
 import { ProductCard, ProductCardSkeleton } from '@/components/entities';
 
-import { useProductContext } from '@/contexts';
+import { useProductContext, useToastContext } from '@/contexts';
+import { getSmartProducts } from '@/services';
 
 import type { IProduct } from '@/models/product';
 
@@ -17,15 +18,40 @@ export const ProductsSection = () => {
     setPage,
     products,
     pageSize,
-    loading,
+
     sortOrder,
     toggleSort,
+    currentCategory,
+    setProducts,
   } = useProductContext();
+  const { addToast } = useToastContext();
+
+  const [loading, setLoading] = useState(false);
+  const fetchProducts = async () => {
+    try {
+      setLoading(true);
+      const newProducts = await getSmartProducts(currentCategory);
+      // Sort products
+      const sortedProducts = newProducts.sort((a, b) =>
+        sortOrder === 'asc' ? a.price - b.price : b.price - a.price
+      );
+      setProducts(sortedProducts);
+    } catch (error) {
+      console.error('Failed to fetch products:', error);
+      addToast('Failed to fetch products', 'error', 5000);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, [currentCategory]);
 
   const paginatedProducts = useMemo(() => {
     const startIndex = (currentPage - 1) * pageSize;
     return products.slice(startIndex, startIndex + pageSize);
-  }, [products, currentPage, pageSize]);
+  }, [products, currentPage, pageSize, sortOrder]);
 
   return (
     <section className={css.productsSection}>
