@@ -6,42 +6,40 @@ import { useCartContext } from '@/contexts';
 
 import type { IProduct } from '@/models/product';
 import css from './productCard.module.scss';
-import { ROUTES } from '@/utils/configs/routesConfig';
 
 interface IProps {
   product: IProduct;
   inCart?: boolean;
   onRemoveFromCart?: (productId: number) => void;
   onQuantityChange?: (productId: number, quantity: number) => void;
+
   quantity?: number;
 }
 
 export const ProductCard = ({
   product,
   inCart = false,
-  onRemoveFromCart,
-  onQuantityChange,
   quantity = 1,
 }: //: { id, image, title, description, price, rating },
 IProps) => {
   const { id, image, title, description, price, rating } = product;
-  const { addItem } = useCartContext();
+  const { addItem, removeItem, updateQuantity } = useCartContext();
 
   const handleAddToCart = () => {
     addItem(product);
   };
 
   const handleRemoveFromCart = () => {
-    onRemoveFromCart?.(id);
+    removeItem(id);
   };
 
   const handleIncreaseQuantity = () => {
-    onQuantityChange?.(id, quantity + 1);
+    updateQuantity(id, quantity + 1);
   };
 
   const handleDecreaseQuantity = () => {
     if (quantity > 1) {
-      onQuantityChange?.(id, quantity - 1);
+      updateQuantity(id, quantity - 1);
     }
   };
 

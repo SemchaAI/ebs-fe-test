@@ -10,8 +10,7 @@ import { useCartContext } from '@/contexts';
 import css from './cartSection.module.scss';
 
 export const CartSection = () => {
-  const { cart, addItem, removeItem, clearCart, updateQuantity, totalAmount } =
-    useCartContext();
+  const { cart, clearCart, totalAmount } = useCartContext();
   return (
     <section className={css.cartSection}>
       <Container>
@@ -34,10 +33,7 @@ export const CartSection = () => {
             renderItem={(product) => (
               <ProductCard
                 product={product}
-                onAddToCart={addItem}
                 inCart
-                onQuantityChange={updateQuantity}
-                onRemoveFromCart={removeItem}
                 quantity={product.quantity}
               />
             )}
