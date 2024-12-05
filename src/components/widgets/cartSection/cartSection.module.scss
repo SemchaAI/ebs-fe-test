@@ -60,6 +60,20 @@
     background-color: var(--primary-contained-hover);
   }
 }
+.cartEmpty {
+  width: 100%;
+  height: inherit;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+
+  border-radius: 30px;
+  background-color: var(--card);
+
+  @include mix.headline24Typo;
+}
 
 @media (max-width: 991px) {
   .cartSectionContainer {
