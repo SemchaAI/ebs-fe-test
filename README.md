@@ -1,136 +1,78 @@
-# Welcome to the Front-End Developer Test!
+# Squirrel Shop
 
-This practical test is designed to evaluate your ability to build a functional React.js application using TypeScript. Through this task, we aim to understand your technical skills, approach to problem-solving, and familiarity with front-end development tools and practices.
+A simplified version of the main and cart page of a online store
 
-## Your Task: Build a Product Catalog Application
-You will create a simple **Product Catalog** application where users can browse products, add items to shopping cart, filter items by category and sort items by price. This project will showcase your ability to:
-- Initialize a React project and set up a development environment.
-- Create reusable components with props and define types for them using TypeScript.
-- Manage state effectively using React's useState and Context API.
-- Integrate with APIs to fetch data dynamically.
-- Apply basic CSS for styling the application.
-- Write basic unit tests for React components.
-- Use Git for version control.
+## Available Scripts
 
-## What We Expect
-1. **Core Features**:
-    - A **Home Page** displaying a list of products with their details (e.g., image, name, price, category). 
-    - A **Shopping Cart Page** listing products added to the "Shopping Cart"
-    - A **Filter and Sort Feature** allowing users to filter products by category and to sort by price.
-    - **Add to Cart** and **Remove from Cart** functionality for each product.
-    - **Total Price** calculation for all products in the cart.
-    - **Clear Cart** button to remove all products from the cart.
-2. **Technical Implementation**:
-    - Fetch product data from a public mock API (https://fakestoreapi.com/). 
-    - Use `useState` for local state and Context API for managing the "Shopping Cart" list. 
-    - Ensure components are reusable and well-structured with appropriate TypeScript types. Example of reusable components: Button, Table, Card.
-    - Implement base layout with header(with navigation), footer, and main content area. It will serve as a template for the Home and Cart pages.
-    - Implement basic routing using React Router for navigation between pages.
-    - Use TypeScript for static typing and defining interfaces.
-3. **Styling**:
-    - Create a user-friendly interface with basic CSS styling (optional: use a CSS framework like TailwindCSS or Styled-Components).
-4. **Testing**:
-    - Write at least one unit test using [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) or Jest.
-5. **Version Control**:
-    - Use Git to manage your code, with a clear and meaningful commit history (tip: use [conventional commit messages](https://www.conventionalcommits.org/en/v1.0.0/) ).
+### Development
 
-### Bonus Points
-The bonus points are **optional** features that you can implement to enhance the application and showcase your skills. You can choose one or more of the following:
-- **Responsive Design**: Make the application responsive for different screen sizes(mobile size it's enough). (tip: use media queries).
-- **Error Handling**: Implement error handling for API requests and user interactions. (tip: show error messages to users).
-- **Loading State**: Add loading indicators or skeleton screens to improve the user experience. (tip: use loading state for API requests).
-- **Accessibility**: Ensure the application is accessible and follows best practices for web accessibility. (tip: use semantic HTML elements).
-- **Additional Features**: Add any additional features or enhancements you think would improve the application. (tip: product details modal/page, search functionality).
-- **Documentation**: Provide a README with clear instructions on how to run the application and a brief description of your approach and any important decisions made.
-- **Creativity**: Feel free to add your own creative touch or features to the application.
+To start the development server, run:
 
-### Super Bonus Points
-If you want to go the extra mile, you can also:
-- **Deployment**: Deploy the application to a hosting service like Netlify, Vercel, or GitHub Pages.
-- **Testing**: Write additional unit tests to ensure the application works as expected.
-- **Pagination**: Implement pagination for the product list. (tip: use query parameters for pagination).
-- **Animations**: Add animations or transitions to enhance the user experience. (tip: use CSS transitions).
-- **Performance Optimization**: Optimize the application for performance (e.g., lazy loading, code splitting).
+```bash
+npm run dev
+```
 
-## Tools
-- **React.js**: Use React.js to build the application.
-- **TypeScript**: Use TypeScript for static typing and defining interfaces.
-- **API**: Use `fetch` to fetch product data from the [Fake Store API](https://fakestoreapi.com/).
-- **React Router**: Use React Router for navigation between pages.
-- **React Context**: Use React Context API for managing global state (e.g., shopping cart).
+This will launch the Vite dev server and serve your application with hot module replacement (HMR) enabled for a smooth development experience.
 
-> **TIP**: To write clean, maintainable code following best practices and naming conventions, take a look at the [Clean Code JavaScript](https://github.com/ryanmcdermott/clean-code-javascript) and [TypeScript Style Guide](https://basarat.gitbook.io/typescript/styleguide).
+---
 
+### Build
 
-## Submission
-- **Delivery**: Share the GitHub repository link with us via email or any other preferred method.
-- **Review**: We will review your submission and provide feedback within 7 days of receiving the link.
-- **Questions**: If you have any questions or need clarification, feel free to reach out to us.
-- **Good Luck!** We look forward to seeing your work and learning more about your skills and approach to front-end development.
+To build the project for production, use:
 
+```bash
+npm run build
+```
 
-## Evaluation Criteria
-We will assess your work based on:
-- **Functionality**: Correct implementation of the features listed.
-- **API Integration**: Fetching data from the API and handling responses.
-- **State Management**: Effective use of `useState` and `Context` for managing state.
-- **Code Quality**: Clean, readable, and maintainable code with well-typed components.
-- **Testing**: Basic tests to validate functionality or rendering.
-- **Git Usage**: Clear and incremental commits reflecting your progress.
-- **Styling**: A visually appealing and functional user interface.
+This script does the following:
 
-## Getting started
-- Clone this repository and run `npm install` to install the dependencies.
-- Run `npm run dev` to start the development server.
+1. Runs TypeScript compilation with `tsc -b` to ensure type checking and transpilation.
+2. Builds the application using Vite for optimized production assets.
 
-## To Do:
-### Setup the Project:
-- [ ] Clone the project.
-- [ ] Install the dependencies using `npm install`.
-- [ ] Start the development server using `npm run dev`.
-- [ ] Create the base layout for the application (header, footer, main content).
-- [ ] Set up React Router for navigation between pages. (`npm install react-router-dom`)
-- [ ] Create a global context for managing the shopping cart state.
-- [ ] Implement basic routing for the Home Page and Shopping Cart Page. (`/`, `/cart`)
-- [ ] Add basic styling to the application using CSS or a CSS framework. 
+---
 
-### Create the Home Page:
-- [ ] Create a table or grid of cards to display the list of products.
-- [ ] Fetch the product data from the API (https://fakestoreapi.com/products).
-- [ ] Display the product details (image, name, price, category).
-- [ ] Add a button to add the product to the shopping cart.
-- [ ] Add a button to remove the product from the shopping cart.
-- [ ] Implement filtering by category and sorting by price (asc/desc).
-### Create the Shopping Cart Page:
-- [ ] Display the list of products added to the shopping cart.
-- [ ] Allow users to change the quantity of products in the cart.
-- [ ] Allow users to remove products from the cart.
-- [ ] Show the total price for all products in the cart.
-- [ ] Add a button to clear all products from the cart.
+### Preview
 
-### Bonus:
-- [ ] Anything you want to add to impress us! Consider the bonus points mentioned above.
+To preview the production build locally, run:
 
-### Examples:
+```bash
+npm run preview
+```
 
-**List of products example**:
-| Name                        | Category ^ | Price ^ | Actions        |
-|-----------------------------|------------|---------|----------------|
-| Solid Gold Petite Micropave | jewelery   | $168    | (-) / (+) |
+This starts a local server to test the production build as it would run in a live environment.
 
-**List of added products in shopping cart example**:
-| Name                        | Category ^ | Price ^ | Quantity | Actions            |
-|-----------------------------|------------|---------|----------|--------------------|
-| Solid Gold Petite Micropave | jewelery   | $168    | 2        | (-) / (+) / Delete |
+---
 
+### Lint
 
-### Resources:
-- [React Documentation](https://react.dev/learn)
-- [TypeScript Documentation](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
-- [React Router Documentation](https://reactrouter.com/en/main/start/tutorial)
-- [React Context API](https://react.dev/learn/passing-data-deeply-with-context)
-- [Fake Store API](https://fakestoreapi.com/)
-- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
-- [Jest Testing Framework](https://jestjs.io/docs/getting-started)
-- [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
-- [Clean Code JavaScript](https://github.com/ryanmcdermott/clean-code-javascript)
+To check your code for linting issues, execute:
+
+```bash
+npm run lint
+```
+
+This uses ESLint to enforce code quality and consistency.
+
+---
+
+### Test
+
+To run tests, use:
+
+```bash
+npm run test
+```
+
+This will execute your tests using Vitest, a fast and modern testing framework.
+
+---
+
+## Comments
+
+1. In addition to the basket, it was also necessary to create another global space for products, since they are influenced by several components at once.
+
+2. I was confused by the API provided for this task, I really didn’t want the ability to manage query parameters, such as for filtering, sorting and pagination.
+
+3. I still couldn't reduce the number of re-renders in this case, especially when pagination is completely performed on the fly by the frontend, probably I still don't have enough skills for it.
+
+4. I am very glad that I was able to touch testing, I've never written anything like this before so I stopped on basic unit test of a button.
