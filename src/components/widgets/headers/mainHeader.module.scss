@@ -67,6 +67,86 @@
   text-decoration: none;
 }
 
+//
+.closeBtn,
+.mobOverlay {
+  display: none;
+}
+.headerNav {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.navList {
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+.headerLink,
+.navLink {
+  position: relative;
+  display: flex;
+
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: color 0.3s ease-in-out;
+
+  &:hover,
+  &:focus {
+    color: var(--primary-main);
+  }
+}
+.badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+
+  @include mix.body12Typo;
+
+  background-color: var(--primary-main);
+  color: var(--text-primary);
+  &:global {
+    animation: 1s scale ease-in-out;
+  }
+}
+.headerControls {
+  display: flex;
+  gap: 20px;
+}
+
+// Burger menu START
+.burgerMenu {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  min-width: 40px;
+  min-height: 40px;
+
+  padding: 5px;
+
+  stroke: var(--primary-main);
+
+  cursor: pointer;
+
+  transition: stroke 0.3s ease-in-out;
+
+  &:hover,
+  &:focus {
+    stroke: var(--primary-contained-hover);
+  }
+}
+// Burger menu END
+
 @media screen and (max-width: 991px) {
   .headerContainer {
     gap: 5px;
@@ -79,9 +159,103 @@
     min-height: 40px;
   }
 }
-@media screen and (max-width: 425px) {
-  .logoIcon {
-    min-width: 30px;
-    min-height: 30px;
+@media screen and (max-width: 768px) {
+  /* BURGER  START*/
+  .burgerMenu {
+    display: flex;
+
+    -webkit-tap-highlight-color: transparent;
+  }
+  /* BURGER  END*/
+  .closeBtn {
+    display: flex;
+    margin-left: auto;
+  }
+  .mobOverlay {
+    display: block;
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100dvw;
+    height: 100dvh;
+    z-index: var(--z-overlay);
+    background: var(--overlay);
+  }
+  .headerNav {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: 60%;
+    min-width: 360px;
+    height: 100%;
+    padding: 20px;
+
+    z-index: var(--z-mob-menu);
+    background-color: var(--body-bg);
+    transform: translate(-100%, 0);
+
+    transition: transform 0.3s ease-in-out;
+  }
+  .headerNavActive {
+    transform: translate(0, 0);
+  }
+  .navList {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    gap: 10px;
+  }
+  .navItem {
+    position: relative;
+    padding: 10px 5px;
+
+    border-bottom: 1px solid var(--divider);
+
+    text-transform: capitalize;
+
+    background-color: var(--card);
+    text-decoration-color: var(--primary-main);
+
+    transition: color 0.3s ease-in-out;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      -webkit-transform: scaleX(0);
+      transform: scaleX(0);
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background-color: var(--primary-main);
+      -webkit-transform-origin: bottom right;
+      transform-origin: bottom right;
+      transition: -webkit-transform 0.25s ease-out;
+      transition: transform 0.25s ease-out;
+      transition: transform 0.25s ease-out, -webkit-transform 0.25s ease-out;
+    }
+    &:hover a,
+    &:focus a {
+      color: var(--snackbar-bg);
+    }
+    &:hover::after,
+    &:focus::after {
+      -webkit-transform: scaleX(1);
+      transform: scaleX(1);
+      -webkit-transform-origin: bottom left;
+      transform-origin: bottom left;
+    }
+  }
+  .headerControls {
+    width: 100%;
+    justify-content: space-between;
+    padding: 20px 5px 0;
+    border-top: 1px solid var(--divider);
   }
 }
